@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú de Redes Sociales con Animación</title>
+    <link rel="stylesheet" href="estilos.css">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div id="splash-screen" class="splash-screen">
+        <svg class="splash-svg" viewBox="0 0 100 100">
+            <defs>
+                <linearGradient id="mainGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#2196F3"/>
+                    <stop offset="100%" stop-color="#E91E63"/>
+                </linearGradient>
+            </defs>
+            <circle class="expanding-circle" cx="50" cy="50" r="1" style="animation-delay: 0s;"></circle>
+            <circle class="expanding-circle" cx="50" cy="50" r="1" style="animation-delay: 0.2s;"></circle>
+            <circle class="expanding-circle" cx="50" cy="50" r="1" style="animation-delay: 0.4s;"></circle>
+            <circle class="expanding-circle" cx="50" cy="50" r="1" style="animation-delay: 0.6s;"></circle>
+            <circle class="expanding-circle" cx="50" cy="50" r="1" style="animation-delay: 0.8s;"></circle>
+        </svg>
+        <div id="welcome-message" class="welcome-message hidden">
+            ¡Bienvenidos!
+        </div>
+    </div>
+
+    <div id="social-menu" class="menu-container hidden">
+        <ul>
+            <li style="--i:0; --clr:#4267B2;"><a href="https://www.facebook.com" target="_blank">Facebook</a></li>
+            <li style="--i:1; --clr:#E60023;"><a href="https://www.instagram.com" target="_blank">Instagram</a></li>
+            <li style="--i:2; --clr:#FF0000;"><a href="https://www.youtube.com" target="_blank">YouTube</a></li>
+            <li style="--i:3; --clr:#1DA1F2;"><a href="https://twitter.com" target="_blank">Twitter</a></li>
+            <li style="--i:4; --clr:#25D366;"><a href="https://web.whatsapp.com" target="_blank">WhatsApp</a></li>
+            <li style="--i:5; --clr:#C13584;"><a href="https://www.pinterest.com" target="_blank">Pinterest</a></li>
+            <li style="--i:6; --clr:#0A66C2;"><a href="https://www.linkedin.com" target="_blank">LinkedIn</a></li>
+        </ul>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const splashScreen = document.getElementById('splash-screen');
+            const welcomeMessage = document.getElementById('welcome-message');
+            const socialMenu = document.getElementById('social-menu');
+            
+            socialMenu.classList.add('hidden');
+            welcomeMessage.classList.add('hidden');
+
+            const circleAnimationDuration = 1000; // Duración de un ciclo de expansión/contracción (más corto)
+            const numberOfCircles = 5;
+            const delayBetweenCircles = 200; // 0.2s
+            const totalCirclesDisplayTime = (numberOfCircles - 1) * delayBetweenCircles + circleAnimationDuration;
+
+            // Muestra la frase "¡Bienvenidos!" después de que los círculos han terminado su ciclo.
+            setTimeout(() => {
+                welcomeMessage.classList.remove('hidden');
+                welcomeMessage.classList.add('fade-in');
+            }, totalCirclesDisplayTime + 500); // 0.5s de retraso para que los círculos desaparezcan
+
+            // Después de la frase, oculta el splash screen y muestra el menú.
+            setTimeout(() => {
+                splashScreen.classList.add('fade-out');
+            }, totalCirclesDisplayTime + 2000); // 2 segundos para apreciar la frase
+
+            setTimeout(() => {
+                splashScreen.style.display = 'none';
+                socialMenu.classList.remove('hidden');
+                socialMenu.classList.add('fade-in');
+            }, totalCirclesDisplayTime + 3000);
+        });
+    </script>
+
+</body>
+</html>
