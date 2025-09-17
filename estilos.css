@@ -1,0 +1,183 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Oswald', sans-serif;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: #000000;
+    overflow: hidden;
+}
+
+/* --- Estilos para la pantalla de inicio (Splash Screen) --- */
+.splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 1;
+    transition: opacity 1s ease-out;
+}
+
+.splash-screen.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.splash-svg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.expanding-circle {
+    cx: 50%;
+    cy: 50%;
+    fill: none;
+    stroke: url(#mainGradient);
+    stroke-width: 2px;
+    transform-origin: center center;
+    animation: expand-and-return 1s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite forwards; /* Más rápido y repetitivo */
+    filter: drop-shadow(0 0 10px #2196F3) drop-shadow(0 0 20px #E91E63);
+}
+
+@keyframes expand-and-return {
+    0% {
+        r: 1;
+        opacity: 1;
+        stroke-width: 2px;
+    }
+    50% {
+        r: 50;
+        opacity: 0.5;
+        stroke-width: 1px;
+    }
+    100% {
+        r: 1;
+        opacity: 0;
+        stroke-width: 0px;
+    }
+}
+
+.welcome-message {
+    position: absolute;
+    font-family: 'Oswald', sans-serif;
+    font-size: 4em;
+    color: #2196F3;
+    text-shadow: 0 0 15px #2196F3, 0 0 30px #2196F3;
+    opacity: 0;
+    z-index: 1001;
+    transition: opacity 1s ease-in;
+    text-align: center;
+}
+
+.welcome-message.hidden {
+    display: none;
+}
+
+.welcome-message.fade-in {
+    display: block;
+    opacity: 1;
+}
+
+
+/* --- Estilos para el menú de redes sociales --- */
+.menu-container {
+    perspective: 1000px;
+    opacity: 0;
+    transition: opacity 1s ease-in;
+    z-index: 1;
+}
+
+.menu-container.hidden {
+    display: none;
+}
+
+.menu-container.fade-in {
+    display: flex;
+    opacity: 1;
+}
+
+ul {
+    position: relative;
+    transform: skewY(-25deg);
+    transition: 0.5s;
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    position: relative;
+    list-style: none;
+    width: 150px;
+    background: #383838;
+    padding: 15px;
+    transition: 0.5s;
+    z-index: calc(var(--i) * -1);
+}
+
+ul li a {
+    text-decoration: none;
+    color: #fff;
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition: 0.5s;
+    font-size: 1.1em;
+}
+
+ul li:hover {
+    background: var(--clr);
+    transform: translateX(-50px);
+}
+
+ul li:hover a {
+    color: #fff;
+}
+
+ul li::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -40px;
+    width: 40px;
+    height: 100%;
+    background: #2e2e2e;
+    transform-origin: right;
+    transform: skewY(45deg);
+    transition: 0.5s;
+}
+
+ul li:hover::before {
+    background: var(--clr);
+}
+
+ul li::after {
+    content: '';
+    position: absolute;
+    top: -40px;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    background: #3a3a3a;
+    transform-origin: bottom;
+    transform: skewX(45deg);
+    transition: 0.5s;
+}
+
+ul li:hover::after {
+    background: var(--clr);
+}
