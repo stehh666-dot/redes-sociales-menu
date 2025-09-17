@@ -6,6 +6,7 @@
     <title>Menú de Redes Sociales con Animación</title>
     <link rel="stylesheet" href="estilos.css">
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
 
@@ -28,13 +29,9 @@
 
     <div id="social-menu" class="menu-container hidden">
         <ul>
-            <li style="--i:0; --clr:#4267B2;"><a href="https://www.facebook.com" target="_blank">Facebook</a></li>
-            <li style="--i:1; --clr:#E60023;"><a href="https://www.instagram.com" target="_blank">Instagram</a></li>
-            <li style="--i:2; --clr:#FF0000;"><a href="https://www.youtube.com" target="_blank">YouTube</a></li>
-            <li style="--i:3; --clr:#1DA1F2;"><a href="https://twitter.com" target="_blank">Twitter</a></li>
-            <li style="--i:4; --clr:#25D366;"><a href="https://web.whatsapp.com" target="_blank">WhatsApp</a></li>
-            <li style="--i:5; --clr:#C13584;"><a href="https://www.pinterest.com" target="_blank">Pinterest</a></li>
-            <li style="--i:6; --clr:#0A66C2;"><a href="https://www.linkedin.com" target="_blank">LinkedIn</a></li>
+            <li style="--i:0; --clr:#4267B2;"><a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+            <li style="--i:1; --clr:#E60023;"><a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a></li>
+            <li style="--i:2; --clr:#25D366;"><a href="https://web.whatsapp.com" target="_blank"><i class="fab fa-whatsapp"></i></a></li>
         </ul>
     </div>
 
@@ -47,25 +44,23 @@
             socialMenu.classList.add('hidden');
             welcomeMessage.classList.add('hidden');
 
-            const circleAnimationDuration = 1500; // Duración total de la animación del círculo
+            const circleAnimationDuration = 1500;
 
-            // Esperar a que la animación del círculo termine para mostrar el mensaje
             setTimeout(() => {
                 document.querySelector('.expanding-circle').style.opacity = '0';
                 welcomeMessage.classList.remove('hidden');
                 welcomeMessage.classList.add('fade-in');
             }, circleAnimationDuration);
 
-            // Después de la frase, ocultar el splash screen y mostrar el menú
             setTimeout(() => {
                 splashScreen.classList.add('fade-out');
-            }, circleAnimationDuration + 1500); // Esperar 1.5s para apreciar la frase
+            }, circleAnimationDuration + 1500);
 
             setTimeout(() => {
                 splashScreen.style.display = 'none';
                 socialMenu.classList.remove('hidden');
                 socialMenu.classList.add('fade-in');
-            }, circleAnimationDuration + 2500); // 1s extra para la transición de desvanecimiento
+            }, circleAnimationDuration + 2500);
         });
     </script>
 
