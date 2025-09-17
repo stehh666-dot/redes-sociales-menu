@@ -37,6 +37,15 @@ body {
     pointer-events: none;
 }
 
+.circle-container {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .splash-svg {
     position: absolute;
     width: 100%;
@@ -50,38 +59,40 @@ body {
     stroke: url(#mainGradient);
     stroke-width: 2px;
     transform-origin: center center;
-    animation: expand-and-return 1s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite forwards; /* Más rápido y repetitivo */
-    filter: drop-shadow(0 0 10px #2196F3) drop-shadow(0 0 20px #E91E63);
+    animation: single-expand-contract 1.5s ease-in-out forwards; /* Más rápido y solo una vez */
+    filter: drop-shadow(0 0 5px #2196F3) drop-shadow(0 0 10px #E91E63);
+    transition: opacity 0.5s ease-out; /* Para que el círculo desaparezca suavemente */
 }
 
-@keyframes expand-and-return {
+@keyframes single-expand-contract {
     0% {
         r: 1;
         opacity: 1;
         stroke-width: 2px;
     }
     50% {
-        r: 50;
-        opacity: 0.5;
-        stroke-width: 1px;
+        r: 25; /* Expande al tamaño deseado */
+        opacity: 1;
+        stroke-width: 2px;
     }
     100% {
-        r: 1;
-        opacity: 0;
-        stroke-width: 0px;
+        r: 25; /* Mantiene el tamaño final para que el mensaje aparezca dentro */
+        opacity: 1;
+        stroke-width: 2px;
     }
 }
 
 .welcome-message {
-    position: absolute;
+    position: relative; /* Para que se posicione dentro del contenedor .circle-container */
     font-family: 'Oswald', sans-serif;
-    font-size: 4em;
+    font-size: 2.5em;
     color: #2196F3;
-    text-shadow: 0 0 15px #2196F3, 0 0 30px #2196F3;
+    text-shadow: 0 0 10px #2196F3, 0 0 20px #2196F3;
     opacity: 0;
     z-index: 1001;
     transition: opacity 1s ease-in;
     text-align: center;
+    padding: 0 10px; /* Para que el texto no toque los bordes del círculo */
 }
 
 .welcome-message.hidden {
@@ -92,7 +103,6 @@ body {
     display: block;
     opacity: 1;
 }
-
 
 /* --- Estilos para el menú de redes sociales --- */
 .menu-container {
