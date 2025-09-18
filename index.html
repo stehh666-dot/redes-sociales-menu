@@ -46,6 +46,7 @@
             welcomeMessage.classList.add('hidden');
 
             const circleAnimationDuration = 1500;
+            const originalBodyColor = getComputedStyle(document.body).backgroundColor;
 
             setTimeout(() => {
                 document.querySelector('.expanding-circle').style.opacity = '0';
@@ -63,11 +64,23 @@
                 socialMenu.classList.add('fade-in');
             }, circleAnimationDuration + 2500);
 
-            // Nuevo código: Cambiar el fondo al hacer clic en un enlace
+            // Código para cambiar el fondo con el mouse
             socialLinks.forEach(link => {
-                link.addEventListener('click', (e) => {
-                    const liElement = e.target.closest('li');
-                    const color = getComputedStyle(liElement).getPropertyValue('--clr');
+                const liElement = link.closest('li');
+                const color = getComputedStyle(liElement).getPropertyValue('--clr');
+
+                // Cambia el color al pasar el mouse por encima
+                link.addEventListener('mouseover', () => {
+                    document.body.style.backgroundColor = color;
+                });
+
+                // Regresa al color original al salir el mouse
+                link.addEventListener('mouseout', () => {
+                    document.body.style.backgroundColor = originalBodyColor;
+                });
+
+                // Mantiene el color al hacer clic (opcional, si quieres que se quede)
+                link.addEventListener('click', () => {
                     document.body.style.backgroundColor = color;
                 });
             });
