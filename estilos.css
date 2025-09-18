@@ -12,8 +12,10 @@ body {
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background: #000000;
-    /* Agrega esta línea para una transición suave del fondo */
+    /* --- Nuevo código para la imagen de fondo --- */
+    background: url('nombre-de-tu-imagen.jpg') no-repeat center center fixed;
+    background-size: cover;
+    /* ------------------------------------------- */
     transition: background-color 0.5s ease;
     overflow: hidden;
 }
