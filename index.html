@@ -46,7 +46,6 @@
             welcomeMessage.classList.add('hidden');
 
             const circleAnimationDuration = 1500;
-            const originalBodyColor = getComputedStyle(document.body).backgroundColor;
 
             setTimeout(() => {
                 document.querySelector('.expanding-circle').style.opacity = '0';
@@ -64,25 +63,24 @@
                 socialMenu.classList.add('fade-in');
             }, circleAnimationDuration + 2500);
 
-            // Código para cambiar el fondo con el mouse
+            // Código para cambiar el fondo
             socialLinks.forEach(link => {
                 const liElement = link.closest('li');
                 const color = getComputedStyle(liElement).getPropertyValue('--clr');
 
                 // Cambia el color al pasar el mouse por encima
                 link.addEventListener('mouseover', () => {
-                    document.body.style.backgroundColor = color;
+                    document.body.style.background = color;
                 });
 
-                // Regresa al color original al salir el mouse
+                // Regresa al estado original al salir el mouse
                 link.addEventListener('mouseout', () => {
-                    document.body.style.background = 'url("nombre-de-tu-imagen.jpg") no-repeat center center fixed';
-document.body.style.backgroundSize = 'cover';
+                    document.body.style.background = ''; // Elimina el estilo en línea
                 });
 
-                // Mantiene el color al hacer clic (opcional, si quieres que se quede)
+                // Mantiene el color al hacer clic (opcional)
                 link.addEventListener('click', () => {
-                    document.body.style.backgroundColor = color;
+                    document.body.style.background = color;
                 });
             });
         });
@@ -90,4 +88,3 @@ document.body.style.backgroundSize = 'cover';
 
 </body>
 </html>
-
