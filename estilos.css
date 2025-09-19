@@ -12,8 +12,12 @@ body {
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background: url('nombre-de-tu-imagen.jpg') no-repeat center center fixed;
-    background-color: #000; /* Color de respaldo si la imagen no carga */
+    background-color: #000;
+    /* Asegúrate de que este nombre coincida EXACTAMENTE con el de tu archivo */
+    background-image: url('1756918728201.jpeg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
     background-size: cover;
     transition: background 0.5s ease;
     overflow: hidden;
