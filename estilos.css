@@ -13,14 +13,15 @@ body {
     justify-content: center;
     min-height: 100vh;
     background-color: #000;
-    /* Asegúrate de que este nombre coincida EXACTAMENTE con el de tu archivo */
-    background-image: url('1756918728201.jpeg');
+    /* Usa el nuevo nombre del archivo aquí */
+    background-image: url('fondo.png');
     background-repeat: no-repeat;
     background-position: center center;
     background-attachment: fixed;
     background-size: cover;
     transition: background 0.5s ease;
     overflow: hidden;
+
 }
 
 /* --- Estilos para la pantalla de inicio (Splash Screen) --- */
@@ -208,3 +209,4 @@ ul li::after {
 ul li:hover::after {
     background: var(--clr);
 }
+
